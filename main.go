@@ -35,6 +35,9 @@ func (t Training) distance() float64 {
 func (t Training) meanSpeed() float64 {
 	distance := t.distance()
 	time := t.Duration.Hours()
+	if time == 0 {
+		return 0
+	}
 
 	meanSpeed := distance / time
 	return meanSpeed
@@ -174,6 +177,9 @@ func (s Swimming) meanSpeed() float64 {
 	length := float64(s.LengthPool)
 	laps := float64(s.CountPool)
 	duration := s.Duration.Hours()
+	if duration == 0 {
+		return 0
+	}
 
 	meanSpeed := length * laps / MInKm / duration
 	return meanSpeed
